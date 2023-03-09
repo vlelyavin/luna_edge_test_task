@@ -1,17 +1,21 @@
+import { useState } from "react";
 import { SearchBar } from "../components/SearchBar";
 import { MovieList } from "../components/MovieList";
-import { useSelector } from "react-redux";
-import { StateInterface } from "../typescript/interfaces";
+import { useDispatch, useSelector } from "react-redux";
+import { SelectedPageInterface, StateInterface } from "../typescript/interfaces";
+import ReactPaginate from "react-paginate";
+import { setError, setLoadingStatus, setMovies } from "../actions/actions";
+import { Loader } from "../components/Loader";
+import { Pagination } from "../components/Pagination/Pagination";
 
 export default function Home() {
-  const error = useSelector((state: StateInterface) => state.error);
+  const [title, setTitle] = useState("");
+
   return (
     <div className="w-screen flex justify-center flex-col items-center">
-      <div className="relative min-w-[300px] w-1/3 my-[50px]">
-        <SearchBar />
-        {error && <p className="absolute left-0 bottom-[-25px] w-full text-center">{error}</p>}
-      </div>
+      <SearchBar title={title} setTitle={setTitle} />
       <MovieList />
+      <Pagination title={title} />
     </div>
   );
 }

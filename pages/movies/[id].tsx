@@ -62,7 +62,9 @@ export default function DetailedMovieInfo({ movie }: DetailedMovieInfoInterface)
 }
 
 export async function getServerSideProps({ params }: ParamsInterface) {
-  const response = await fetch(`${process.env.API_BASE_URL}?i=${params.id}&plot=full&apikey=${process.env.API_KEY}`);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}?i=${params.id}&plot=full&apikey=${process.env.API_KEY}`
+  );
   const movie = await response.json();
   return {
     props: { movie },

@@ -32,12 +32,22 @@ export interface DetailedMovieInfoInterface {
 }
 
 export interface StateInterface {
-  isLoading: boolean;
+  loading: boolean;
   movies: Array<DetailedMovieInfoInterface>;
   error: string;
+  pages: number;
 }
 
 export interface ActionInterface {
   type: string;
   payload: any;
+}
+
+export interface SelectedPageInterface {
+  selected: number;
+}
+
+export interface SearchBarPropsInterface {
+  title: string;
+  setTitle: React.Dispatch<React.SetStateAction<string>>;
 }
