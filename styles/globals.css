@@ -12,8 +12,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: black;
-    color: white;
+    background: theme("colors.secondary");
+    color: theme("colors.primary");
     overflow-x: hidden;
   }
 }

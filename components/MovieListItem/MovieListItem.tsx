@@ -3,11 +3,11 @@ import { MovieInfoInterface } from "../../typescript/interfaces";
 
 export const MovieListItem = ({ movie }: MovieInfoInterface) => {
   return (
-    <div className="w-[200px] h-[250px] bg-[#0f0f0f] flex flex-col">
-      <div className="h-[80%] w-full">
-        <img src={movie.Poster} alt={movie.Title} className="w-full h-full" />
+    <div className="relative w-[200px] h-[250px] flex flex-col">
+      <div className="h-full w-full">
+        <img src={movie.Poster} alt={movie.Title} className="w-full h-full object-cover" />
       </div>
-      <div className="w-full min-h-[20%] flex flex-col items-center justify-center">
+      <div className="absolute bottom-0 left-0 w-full flex p-3 grow flex-col items-center justify-center text-center bg-dimGray">
         <Link href={`/movies/${movie.imdbID}`}>
           <div>{movie.Title}</div>
         </Link>

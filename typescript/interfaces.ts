@@ -41,11 +41,6 @@ export interface StateInterface {
   searchQuery: string;
 }
 
-export interface ActionInterface {
-  type: string;
-  payload: any;
-}
-
 export interface SelectedPageInterface {
   selected: number;
 }
@@ -59,4 +54,9 @@ export interface PageParamsInterface {
 
 export interface ApiResponseInterface {
   result: { Search: Array<DetailedMovieInfoInterface>; totalResults: string; Response: boolean; Error: string };
+}
+
+export interface ActionInterface {
+  type: string;
+  payload: any;
 }

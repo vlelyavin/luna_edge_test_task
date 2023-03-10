@@ -10,7 +10,7 @@ export const MovieList = () => {
     return <Loader />;
   }
   return (
-    <div className="w-4/5 flex flex-wrap justify-center gap-5">
+    <div className="max-w-[1100px] w-full flex flex-wrap justify-center gap-5">
       {movies?.map((movie: any) => (
         <MovieListItem key={movie.imdbID} movie={movie} />
       ))}

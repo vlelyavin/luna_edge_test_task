@@ -5,6 +5,7 @@ import {
   SET_NUMBER_OF_PAGES,
   SET_SEARCH_QUERY,
 } from "../constants/actionTypes";
+import { ActionInterface } from "../typescript/interfaces";
 
 export const INITIAL_STATE = {
   loading: false,
@@ -13,7 +14,7 @@ export const INITIAL_STATE = {
   searchQuery: "",
 };
 
-export const mainReducer = (state = INITIAL_STATE, action: any) => {
+export const mainReducer = (state = INITIAL_STATE, action: ActionInterface) => {
   switch (action.type) {
     case SET_MOVIES:
       return { ...state, movies: action.payload };

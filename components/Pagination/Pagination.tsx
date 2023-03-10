@@ -63,7 +63,7 @@ export const Pagination = () => {
             className={"flex text-xl"}
             pageClassName={"w-full h-full "}
             pageLinkClassName={"w-[40px] h-[40px] flex justify-center items-center"}
-            activeClassName={"bg-[#0f0f0f] rounded-md"}
+            activeClassName={"bg-dimGray rounded-md"}
           />
         </div>
       )}

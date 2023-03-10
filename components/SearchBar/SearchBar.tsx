@@ -49,18 +49,24 @@ export const SearchBar = () => {
     setTitle(e.target.value);
   };
 
+  const handleKeyDown = (e: { key: string }) => {
+    if (e.key === "Enter") {
+      handleClick();
+    }
+  };
   return (
-    <div className="relative min-w-[300px] w-1/3 my-[40px] bg-[#0f0f0f] rounded-lg">
-      <div className="flex justify-center items-center w-full h-[50px] border-1 border-white">
+    <div className="relative min-w-[300px] w-1/3 my-[40px] bg-dimGray rounded-lg">
+      <div className="flex justify-center items-center w-full h-[50px]">
         <input
-          className="w-3/4 bg-[#0f0f0f] outline-none h-full px-3 placeholder:text-white rounded-l-lg"
+          className="w-3/4 bg-dimGray outline-none h-full px-3 placeholder:text-primary rounded-l-lg"
           placeholder="Enter movie name or id"
           value={title}
           onChange={handleChange}
+          onKeyDown={handleKeyDown}
         />
         <button
           onClick={handleClick}
-          className="w-1/4 h-full h-full  duration-300 bg-[#0f0f0f] rounded-r-lg hover:bg-[#1A1A1A] hover:rounded-lg"
+          className="w-1/4 h-full h-full duration-300 bg-darkGray rounded-r-lg hover:bg-gray hover:rounded-lg"
         >
           Search
         </button>
