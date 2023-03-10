@@ -1,8 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setError, setLoadingStatus, setMovies, setNumberOfPages, setSearchQuery } from "../../actions/actions";
-import { StateInterface } from "../../typescript/interfaces";
 import { SearchBarError } from "../SearchBarError/SearchBarError";
 
 export const SearchBar = () => {

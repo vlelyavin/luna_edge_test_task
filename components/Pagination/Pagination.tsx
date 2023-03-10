@@ -56,6 +56,7 @@ export const Pagination = () => {
             breakLabel={"..."}
             breakClassName={"px-3 py-1"}
             pageCount={state.pages}
+            forcePage={Number(router.query.page) - 1}
             marginPagesDisplayed={1}
             pageRangeDisplayed={4}
             onPageChange={handlePageClick}
