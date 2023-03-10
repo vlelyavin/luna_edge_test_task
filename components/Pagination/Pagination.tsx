@@ -57,7 +57,7 @@ export const Pagination = () => {
             marginPagesDisplayed={1}
             pageRangeDisplayed={4}
             onPageChange={handlePageClick}
-            className={"flex text-xl"}
+            className={"flex text-l"}
             pageClassName={"w-full h-full "}
             pageLinkClassName={"w-[40px] h-[40px] flex justify-center items-center"}
             activeClassName={"bg-dimGray rounded-md"}

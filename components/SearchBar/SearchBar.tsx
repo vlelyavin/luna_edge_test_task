@@ -54,7 +54,7 @@ export const SearchBar = () => {
     }
   };
   return (
-    <div className="min-w-[300px] w-[600px] flex justify-center items-center gap-5 h-[50px] my-[40px]">
+    <div className="min-w-[400px] w-1/2 flex justify-center items-center gap-5 min-h-[50px] my-[40px] max-[1000px]:flex-col">
       <div className="relative w-full h-full bg-dimGray rounded-lg">
         <div className="flex items-center w-full h-full">
           <input
