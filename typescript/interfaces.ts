@@ -16,9 +16,11 @@ export interface MovieInfoInterface {
 
 export interface DetailedMovieInfoInterface {
   movie: {
-    Type: string;
-    Poster: string;
     Title: string;
+    Poster: string;
+    imdbID: string;
+    Year: string;
+    Type: string;
     Actors: string;
     Awards: string;
     Country: string;
@@ -28,7 +30,6 @@ export interface DetailedMovieInfoInterface {
     Rated: string;
     Released: string;
     Runtime: string;
-    Year: string;
     imdbRating: string;
     Response?: string;
     Error?: string;
@@ -36,11 +37,11 @@ export interface DetailedMovieInfoInterface {
 }
 
 export interface StateInterface {
-  loading: boolean;
+  pages: number;
   movies: Array<DetailedMovieInfoInterface>;
   error: string;
-  pages: number;
   searchQuery: string;
+  savedMovies: Array<string>;
 }
 
 export interface SelectedPageInterface {
@@ -61,4 +62,15 @@ export interface ApiResponseInterface {
 export interface ActionInterface {
   type: string;
   payload: any;
+}
+
+export interface MovieImageInterface {
+  poster: string;
+  width: number;
+  height: number;
+}
+
+export interface ButtonInterface {
+  handleClick?: () => void;
+  title: string;
 }

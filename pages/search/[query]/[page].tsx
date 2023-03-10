@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { setMovies, setNumberOfPages } from "../../../actions/actions";
 import { ApiResponseInterface, PageParamsInterface } from "../../../typescript/interfaces";
+import Head from "next/head";
 
 export default function Page({ result }: ApiResponseInterface) {
   const dispatch = useDispatch();
@@ -14,11 +15,17 @@ export default function Page({ result }: ApiResponseInterface) {
     dispatch(setNumberOfPages(Math.ceil(Number(result.totalResults) / 10)));
   }, []);
   return (
-    <div className="w-screen flex justify-center flex-col items-center">
-      <SearchBar />
-      <MovieList />
-      <Pagination />
-    </div>
+    <>
+      <Head>
+        <title>Movies</title>
+        <meta name="description" content="Movie search by title or id" />
+      </Head>
+      <div className="w-screen flex justify-center flex-col items-center">
+        <SearchBar />
+        <MovieList />
+        <Pagination />
+      </div>
+    </>
   );
 }
 

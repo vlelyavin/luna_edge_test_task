@@ -1,7 +1,9 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setError, setMovies, setNumberOfPages, setSearchQuery } from "../../actions/actions";
+import { Button } from "../Button/Button";
 import { SearchBarError } from "../SearchBarError/SearchBarError";
 
 export const SearchBar = () => {
@@ -52,23 +54,23 @@ export const SearchBar = () => {
     }
   };
   return (
-    <div className="relative min-w-[300px] w-1/3 my-[40px] bg-dimGray rounded-lg">
-      <div className="flex justify-center items-center w-full h-[50px]">
-        <input
-          className="w-3/4 bg-dimGray outline-none h-full px-3 placeholder:text-primary rounded-l-lg"
-          placeholder="Enter movie name or id"
-          value={title}
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-        />
-        <button
-          onClick={handleClick}
-          className="w-1/4 h-full h-full duration-300 bg-darkGray rounded-r-lg hover:bg-gray hover:rounded-lg"
-        >
-          Search
-        </button>
+    <div className="min-w-[300px] w-[600px] flex justify-center items-center gap-5 h-[50px] my-[40px]">
+      <div className="relative w-full h-full bg-dimGray rounded-lg">
+        <div className="flex items-center w-full h-full">
+          <input
+            className="w-full bg-dimGray outline-none h-full px-3 placeholder:text-primary rounded-l-lg"
+            placeholder="Enter movie title"
+            value={title}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+          />
+          <Button title="Search" handleClick={handleClick} />
+        </div>
+        <SearchBarError />
       </div>
-      <SearchBarError />
+      <Link href="/savedMovies">
+        <Button title="Saved" />
+      </Link>
     </div>
   );
 };

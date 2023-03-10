@@ -1,10 +1,12 @@
-import { SET_ERROR, SET_MOVIES, SET_NUMBER_OF_PAGES, SET_SEARCH_QUERY } from "../constants/actionTypes";
+import { ADD_TO_SAVED, SET_ERROR, SET_MOVIES, SET_NUMBER_OF_PAGES, SET_SEARCH_QUERY } from "../constants/actionTypes";
 import { ActionInterface } from "../typescript/interfaces";
 
 export const INITIAL_STATE = {
   movies: [],
   error: "",
   searchQuery: "",
+  savedMovies: [],
+  pages: 0,
 };
 
 export const mainReducer = (state = INITIAL_STATE, action: ActionInterface) => {
@@ -17,6 +19,8 @@ export const mainReducer = (state = INITIAL_STATE, action: ActionInterface) => {
       return { ...state, pages: action.payload };
     case SET_SEARCH_QUERY:
       return { ...state, searchQuery: action.payload };
+    case ADD_TO_SAVED:
+      return { ...state, savedMovies: [...state.savedMovies, action.payload] };
     default:
       return state;
   }
