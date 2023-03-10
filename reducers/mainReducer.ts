@@ -2,7 +2,6 @@ import { SET_ERROR, SET_MOVIES, SET_NUMBER_OF_PAGES, SET_SEARCH_QUERY } from "..
 import { ActionInterface } from "../typescript/interfaces";
 
 export const INITIAL_STATE = {
-  loading: false,
   movies: [],
   error: "",
   searchQuery: "",
