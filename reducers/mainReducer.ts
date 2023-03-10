@@ -20,8 +20,6 @@ export const mainReducer = (state = INITIAL_STATE, action: ActionInterface) => {
       return { ...state, movies: action.payload };
     case SET_ERROR:
       return { ...state, error: action.payload };
-    case SET_LOADING_STATUS:
-      return { ...state, loading: action.payload };
     case SET_NUMBER_OF_PAGES:
       return { ...state, pages: action.payload };
     case SET_SEARCH_QUERY:

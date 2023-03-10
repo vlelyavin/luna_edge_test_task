@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { StateInterface, SelectedPageInterface } from "../../typescript/interfaces";
-import { setLoadingStatus, setError, setMovies, setSearchQuery } from "../../actions/actions";
 import ReactPaginate from "react-paginate";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { StateInterface, SelectedPageInterface } from "../../typescript/interfaces";
+import { setError, setMovies, setSearchQuery } from "../../actions/actions";
 
 export const Pagination = () => {
   const state = useSelector((state: StateInterface) => state);
@@ -18,7 +18,6 @@ export const Pagination = () => {
 
   const handlePageClick = (e: SelectedPageInterface) => {
     router.push(`/search/${state.searchQuery}/${e.selected + 1}`);
-    dispatch(setLoadingStatus(true));
     fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}?s=${state.searchQuery}&page=${e.selected + 1}&apikey=${
         process.env.NEXT_PUBLIC_API_KEY
@@ -37,10 +36,8 @@ export const Pagination = () => {
           dispatch(setError(""));
           dispatch(setMovies(result.Search));
         }
-        dispatch(setLoadingStatus(false));
       })
       .catch((e) => {
-        dispatch(setLoadingStatus(false));
         dispatch(setError(e.message));
       });
   };

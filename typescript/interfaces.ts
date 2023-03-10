@@ -30,6 +30,8 @@ export interface DetailedMovieInfoInterface {
     Runtime: string;
     Year: string;
     imdbRating: string;
+    Response?: string;
+    Error?: string;
   };
 }
 

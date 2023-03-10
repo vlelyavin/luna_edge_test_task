@@ -1,14 +1,7 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setLoadingStatus } from "../../actions/actions";
 import { Description } from "../../components/Description/Description";
 import { DetailedMovieInfoInterface, ParamsInterface } from "../../typescript/interfaces";
 
 export default function DetailedMovieInfo({ movie }: DetailedMovieInfoInterface) {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(setLoadingStatus(false));
-  }, []);
   return (
     <div className="w-screen flex justify-center items-center py-8">
       <div className="max-w-[1000px] w-full px-10">

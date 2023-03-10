@@ -17,11 +17,6 @@ export const setError = (error: string) => ({
   payload: error,
 });
 
-export const setLoadingStatus = (status: boolean) => ({
-  type: SET_LOADING_STATUS,
-  payload: status,
-});
-
 export const setNumberOfPages = (number: number) => ({
   type: SET_NUMBER_OF_PAGES,
   payload: number,

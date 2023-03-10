@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setError, setLoadingStatus, setMovies, setNumberOfPages, setSearchQuery } from "../../actions/actions";
+import { setError, setMovies, setNumberOfPages, setSearchQuery } from "../../actions/actions";
 import { SearchBarError } from "../SearchBarError/SearchBarError";
 
 export const SearchBar = () => {
@@ -18,7 +18,6 @@ export const SearchBar = () => {
   const handleClick = () => {
     router.push(`/search/${title}/1`);
     dispatch(setSearchQuery(title));
-    dispatch(setLoadingStatus(true));
     fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}?s=${title}&apikey=${process.env.NEXT_PUBLIC_API_KEY}`)
       .then((response) => {
         if (!response.ok) {
@@ -36,10 +35,8 @@ export const SearchBar = () => {
           dispatch(setError(""));
           dispatch(setMovies(result.Search));
         }
-        dispatch(setLoadingStatus(false));
       })
       .catch((e) => {
-        dispatch(setLoadingStatus(false));
         dispatch(setError(e.message));
       });
   };
