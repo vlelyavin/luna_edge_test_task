@@ -1,12 +1,24 @@
-import { useDispatch } from "react-redux";
-import { setError, setLoadingStatus, setMovies, setNumberOfPages } from "../../actions/actions";
-import { SearchBarPropsInterface } from "../../typescript/interfaces";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setError, setLoadingStatus, setMovies, setNumberOfPages, setSearchQuery } from "../../actions/actions";
+import { StateInterface } from "../../typescript/interfaces";
 import { SearchBarError } from "../SearchBarError/SearchBarError";
 
-export const SearchBar = ({ title, setTitle }: SearchBarPropsInterface) => {
+export const SearchBar = () => {
+  const router = useRouter();
+  const [title, setTitle] = useState("");
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (router.query.query) {
+      setTitle(router.query.query.toString());
+    }
+  }, [router.query.query]);
+
   const handleClick = () => {
+    router.push(`/search/${title}/1`);
+    dispatch(setSearchQuery(title));
     dispatch(setLoadingStatus(true));
     fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}?s=${title}&apikey=${process.env.NEXT_PUBLIC_API_KEY}`)
       .then((response) => {
@@ -17,7 +29,9 @@ export const SearchBar = ({ title, setTitle }: SearchBarPropsInterface) => {
       })
       .then((result) => {
         if (result.Error) {
+          dispatch(setNumberOfPages(0));
           dispatch(setError(result.Error));
+          dispatch(setMovies([]));
         } else {
           dispatch(setNumberOfPages(Math.ceil(result.totalResults / 10)));
           dispatch(setError(""));

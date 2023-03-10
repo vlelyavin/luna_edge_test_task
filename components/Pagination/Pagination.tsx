@@ -1,17 +1,26 @@
 import { useDispatch, useSelector } from "react-redux";
 import { StateInterface, SelectedPageInterface } from "../../typescript/interfaces";
-import { setLoadingStatus, setError, setMovies } from "../../actions/actions";
+import { setLoadingStatus, setError, setMovies, setSearchQuery } from "../../actions/actions";
 import ReactPaginate from "react-paginate";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
-export const Pagination = ({ title }: { title: string }) => {
-  const movies = useSelector((state: StateInterface) => state.movies);
-  const pages = useSelector((state: StateInterface) => state.pages);
+export const Pagination = () => {
+  const state = useSelector((state: StateInterface) => state);
   const dispatch = useDispatch();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.query.query) {
+      dispatch(setSearchQuery(router.query.query.toString()));
+    }
+  }, []);
 
   const handlePageClick = (e: SelectedPageInterface) => {
+    router.push(`/search/${state.searchQuery}/${e.selected + 1}`);
     dispatch(setLoadingStatus(true));
     fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}?s=${title}&page=${e.selected + 1}&apikey=${
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}?s=${state.searchQuery}&page=${e.selected + 1}&apikey=${
         process.env.NEXT_PUBLIC_API_KEY
       }`
     )
@@ -37,7 +46,7 @@ export const Pagination = ({ title }: { title: string }) => {
   };
   return (
     <>
-      {movies?.length > 0 ? (
+      {state.movies?.length > 0 && (
         <div className="my-5">
           <ReactPaginate
             previousLabel={"Back"}
@@ -46,7 +55,7 @@ export const Pagination = ({ title }: { title: string }) => {
             nextLinkClassName={"h-full w-full flex items-center justify-center px-3"}
             breakLabel={"..."}
             breakClassName={"px-3 py-1"}
-            pageCount={pages}
+            pageCount={state.pages}
             marginPagesDisplayed={1}
             pageRangeDisplayed={4}
             onPageChange={handlePageClick}
@@ -56,7 +65,7 @@ export const Pagination = ({ title }: { title: string }) => {
             activeClassName={"bg-[#0f0f0f] rounded-md"}
           />
         </div>
-      ) : null}
+      )}
     </>
   );
 };

@@ -9,6 +9,8 @@ export interface MovieInfoInterface {
     Poster: string;
     Title: string;
     imdbID: string;
+    Year: string;
+    Type: string;
   };
 }
 
@@ -36,6 +38,7 @@ export interface StateInterface {
   movies: Array<DetailedMovieInfoInterface>;
   error: string;
   pages: number;
+  searchQuery: string;
 }
 
 export interface ActionInterface {
@@ -47,7 +50,13 @@ export interface SelectedPageInterface {
   selected: number;
 }
 
-export interface SearchBarPropsInterface {
-  title: string;
-  setTitle: React.Dispatch<React.SetStateAction<string>>;
+export interface PageParamsInterface {
+  params: {
+    query: string;
+    page: string;
+  };
+}
+
+export interface ApiResponseInterface {
+  result: { Search: Array<DetailedMovieInfoInterface>; totalResults: string; Response: boolean; Error: string };
 }
