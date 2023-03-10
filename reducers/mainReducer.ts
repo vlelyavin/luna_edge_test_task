@@ -1,10 +1,4 @@
-import {
-  SET_ERROR,
-  SET_LOADING_STATUS,
-  SET_MOVIES,
-  SET_NUMBER_OF_PAGES,
-  SET_SEARCH_QUERY,
-} from "../constants/actionTypes";
+import { SET_ERROR, SET_MOVIES, SET_NUMBER_OF_PAGES, SET_SEARCH_QUERY } from "../constants/actionTypes";
 import { ActionInterface } from "../typescript/interfaces";
 
 export const INITIAL_STATE = {
