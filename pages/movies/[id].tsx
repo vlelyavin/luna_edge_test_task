@@ -1,6 +1,14 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setLoadingStatus } from "../../actions/actions";
+import { Description } from "../../components/Description/Description";
 import { DetailedMovieInfoInterface, ParamsInterface } from "../../typescript/interfaces";
 
 export default function DetailedMovieInfo({ movie }: DetailedMovieInfoInterface) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setLoadingStatus(false));
+  }, []);
   return (
     <div className="w-screen flex justify-center items-center py-8">
       <div className="max-w-[1000px] w-full px-10">
@@ -25,31 +33,12 @@ export default function DetailedMovieInfo({ movie }: DetailedMovieInfoInterface)
             <img src={movie.Poster} alt="moviePoster" className="w-full h-full object-cover" />
           </div>
           <div className="flex flex-col gap-2 justify-center">
-            <p>
-              <span className="font-bold">Year : </span>
-              {movie.Year}
-            </p>
-            <p>
-              <span className="font-bold">Genre : </span>
-              {movie.Type}, {movie.Genre}
-            </p>
-
-            <p>
-              <span className="font-bold">Country : </span>
-              {movie.Country}
-            </p>
-            <p>
-              <span className="font-bold">Director : </span>
-              {movie.Director}
-            </p>
-            <p>
-              <span className="font-bold">Actors : </span>
-              {movie.Actors}
-            </p>
-            <p>
-              <span className="font-bold">Awards : </span>
-              {movie.Awards}
-            </p>
+            <Description property="Year : " value={movie.Year} />
+            <Description property="Genre : " value={`${movie.Type}, ${movie.Genre}`} />
+            <Description property="Country : " value={movie.Country} />
+            <Description property="Director : " value={movie.Director} />
+            <Description property="Actors : " value={movie.Actors} />
+            <Description property="Awards : " value={movie.Awards} />
           </div>
         </div>
         <div>
