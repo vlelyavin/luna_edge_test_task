@@ -1,12 +1,12 @@
 import { Description } from "../../components/Description/Description";
-import { DetailedMovieInfoInterface, ParamsInterface } from "../../typescript/interfaces";
+import { DetailedMovieInfoInterface, ParamsInterface, StateInterface } from "../../typescript/interfaces";
 import { MovieImage } from "../../components/MovieImage/MovieImage";
 import { Button } from "../../components/Button/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToSaved } from "../../actions/actions";
 import Head from "next/head";
 
-export default function DetailedMovieInfo({ movie }: DetailedMovieInfoInterface) {
+export default function DetailedMovieInfo({ movie }: { movie: DetailedMovieInfoInterface }) {
   const dispatch = useDispatch();
 
   const handleClick = () => {

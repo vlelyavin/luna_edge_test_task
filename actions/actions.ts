@@ -1,7 +1,7 @@
 import { SET_MOVIES, SET_ERROR, SET_NUMBER_OF_PAGES, SET_SEARCH_QUERY, ADD_TO_SAVED } from "../constants/actionTypes";
 import { DetailedMovieInfoInterface, MovieInfoInterface } from "../typescript/interfaces";
 
-export const setMovies = (movies: Array<DetailedMovieInfoInterface>) => ({
+export const setMovies = (movies: Array<MovieInfoInterface>) => ({
   type: SET_MOVIES,
   payload: movies,
 });
@@ -21,7 +21,7 @@ export const setSearchQuery = (query: string) => ({
   payload: query,
 });
 
-export const addToSaved = (title: string) => ({
+export const addToSaved = (title: any) => ({
   type: ADD_TO_SAVED,
   payload: title,
 });

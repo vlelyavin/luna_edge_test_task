@@ -2,7 +2,7 @@ import Link from "next/link";
 import { MovieInfoInterface } from "../../typescript/interfaces";
 import { MovieImage } from "../MovieImage/MovieImage";
 
-export const MovieListItem = ({ movie }: MovieInfoInterface) => {
+export const MovieListItem = ({ movie }: { movie: MovieInfoInterface }) => {
   return (
     <Link href={`/movies/${movie.imdbID}`} className="relative w-[200px] h-[250px] flex flex-col">
       <div className="h-full w-full overflow-hidden object-center">

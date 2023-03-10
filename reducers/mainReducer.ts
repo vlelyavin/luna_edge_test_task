@@ -1,5 +1,5 @@
 import { ADD_TO_SAVED, SET_ERROR, SET_MOVIES, SET_NUMBER_OF_PAGES, SET_SEARCH_QUERY } from "../constants/actionTypes";
-import { ActionInterface } from "../typescript/interfaces";
+import { ActionInterface, StateInterface } from "../typescript/interfaces";
 
 export const INITIAL_STATE = {
   movies: [],
@@ -9,7 +9,7 @@ export const INITIAL_STATE = {
   pages: 0,
 };
 
-export const mainReducer = (state = INITIAL_STATE, action: ActionInterface) => {
+export const mainReducer = (state: StateInterface = INITIAL_STATE, action: ActionInterface) => {
   switch (action.type) {
     case SET_MOVIES:
       return { ...state, movies: action.payload };
